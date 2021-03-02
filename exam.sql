@@ -1,7 +1,7 @@
 # basics
 - SELECT population FROM world WHERE name = 'Germany';
 - SELECT name, population FROM world WHERE name IN ('Sweden', 'Norway', 'Denmark');
-- SELECT name, area FROM world WHERE area BETWEEN 200000 AND 250000
+- SELECT name, area FROM world WHERE area BETWEEN 200000 AND 250000;
 
 # from world
 - SELECT name, continent, population FROM world;
@@ -47,3 +47,10 @@
 - SELECT goal.player,goal.teamid, stadium, mdate FROM game JOIN goal ON (id=matchid AND goal.teamid='GER')
 - SELECT team1, team2 stadium, player FROM game JOIN goal ON (id=matchid AND player LIKE 'Mario%')
 - SELECT player, teamid, coach, gtime FROM goal goal JOIN eteam on teamid=id WHERE gtime<=10
+- SELECT mdate, teamname FROM game JOIN eteam ON (team1=eteam.id) WHERE coach = 'Fernando Santos';
+- SELECT player FROM goal JOIN game ON (matchid = id) WHERE stadium = 'National Stadium, Warsaw'
+- SELECT DISTINCT(player) FROM game JOIN goal ON matchid = id WHERE ((team1='GER' OR team2='GER') AND teamid != 'GER')
+- SELECT teamname, COUNT(player) FROM eteam JOIN goal ON id=teamid GROUP BY teamname
+- SELECT stadium ,COUNT(stadium)FROM game join goal ON(id = matchid) GROUP BY stadium                 
+- SELECT matchid,mdate,COUNT(matchid) FROM game JOIN goal ON matchid = id WHERE (team1 = 'POL' OR team2 = 'POL') GROUP BY matchid, mdate    
+- SELECT DISTINCT matchid, game.mdate,COUNT(matchid) FROM goal JOIN game on (matchid = id) WHERE teamid= 'GER' GROUP BY matchid,game.mdate                                                                                                  
