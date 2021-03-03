@@ -53,4 +53,30 @@
 - SELECT teamname, COUNT(player) FROM eteam JOIN goal ON id=teamid GROUP BY teamname
 - SELECT stadium ,COUNT(stadium)FROM game join goal ON(id = matchid) GROUP BY stadium                 
 - SELECT matchid,mdate,COUNT(matchid) FROM game JOIN goal ON matchid = id WHERE (team1 = 'POL' OR team2 = 'POL') GROUP BY matchid, mdate    
-- SELECT DISTINCT matchid, game.mdate,COUNT(matchid) FROM goal JOIN game on (matchid = id) WHERE teamid= 'GER' GROUP BY matchid,game.mdate                                                                                                  
+- SELECT DISTINCT matchid, game.mdate,COUNT(matchid) FROM goal JOIN game on (matchid = id) WHERE teamid= 'GER' GROUP BY matchid,game.mdate   
+- SELECT mdate,team1, SUM(CASE WHEN teamid = team1 THEN 1 ELSE 0 END) AS score1,team2,SUM(CASE WHEN teamid = team2 THEN 1 ELSE 0 END) AS score2 FROM game LEFT JOIN goal ON (id = matchid)GROUP BY mdate,team1,team2ORDER BY mdate, matchid, team1, team2      
+  
+                                                                                                   
+#More JOIN operations
+- SELECT id, title FROM movie WHERE yr=1962        
+- SELECT yr FROM movie WHERE title = 'Citizen Kane'                                                                                                   
+- SELECT id, title, yr FROM movie WHERE title LIKE 'Star Trek%' GROUP BY yr, id, title                                                                                                   
+- SELECT id FROM actor WHERE name ='Glenn Close'                                                                                                   
+- SELECT id FROM movie WHERE title='Casablanca'                                                                                                   
+- SELECT name FROM actor JOIN casting ON id = actorid WHERE movieid=(SELECT id FROM movie WHERE title='Casablanca')
+- SELECT name FROM actor JOIN casting ON id = actorid WHERE movieid=(SELECT id FROM movie WHERE title='Alien')     
+                                                                        
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
+                                                                                                   
